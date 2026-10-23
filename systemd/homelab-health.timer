@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Homelab Health Check Every 5 Minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+Unit=homelab-health.service
+
+[Install]
+WantedBy=timers.target
+

@@ -48,13 +48,49 @@ The server hosts an Nginx web service accessible over HTTP within my lab network
 - Validated configurations using nginx -t.
 
 ## Verification
-
 - Confirmed Nginx was running.
 - Verified HTTP/1.1 200 OK using curl.
 - Validated the production Nginx configuration successfully.
+
+## Automated Server Health Monitoring
+
+Developed a Bash script to collect server health information, including:
+
+- System uptime and load averages
+- Memory and disk utilization
+- Nginx service availability
+- HTTP response status
+
+Configured a systemd oneshot service and timer to automatically run the health check every five minutes.
+
+The script uses conditional logic and exit codes to report successful and failed HTTP checks.
+
+### Running the Script
+
+```bash
+./scripts/health-check.sh
+```
+
+### Monitoring the Scheduled Service
+
+```bash
+systemctl status homelab-health.timer
+journalctl -u homelab-health.service --no-pager
+```
+
+The systemd configuration files are available in the `systemd/` directory.
+
+The service currently runs on the Ubuntu homelab and writes its output to the systemd journal.
 
 ## Next Steps
 
 - Add an infrastructure architecture diagram.
 - Document configuration and troubleshooting exercises.
 - Implement monitoring and automation.
+
+## Future Improvements
+
+- Add automated failure notifications.
+- Implement CPU, memory, and disk usage thresholds.
+- Expand monitoring to multiple servers.
+- Explore Docker and cloud infrastructure.

@@ -1,0 +1,9 @@
+[Unit]
+Description=Linux Homelab Health Check
+After=network.target
+
+[Service]
+Type=oneshot
+User=gabe
+WorkingDirectory=/home/gabe/linux-server-homelab
+ExecStart=/home/gabe/linux-server-homelab/scripts/health-check.sh
