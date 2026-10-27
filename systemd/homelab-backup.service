@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup Nginx Website Files
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=gabe
+WorkingDirectory=/home/gabe/linux-server-homelab
+ExecStart=/home/gabe/linux-server-homelab/scripts/backup-website.sh

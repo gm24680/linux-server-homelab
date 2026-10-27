@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Nginx Website Backup
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 UTC
+Persistent=true
+Unit=homelab-backup.service
+
+[Install]
+WantedBy=timers.target
