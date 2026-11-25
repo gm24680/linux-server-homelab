@@ -1,0 +1,21 @@
+name: Linux Homelab CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Bash scripts
+        run: |
+          set -e
+          for script in scripts/*.sh; do
+            echo "Checking $script"
+            bash -n "$script"
+          done
